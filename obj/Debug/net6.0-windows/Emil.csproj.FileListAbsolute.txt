@@ -1,0 +1,17 @@
+D:\VS\Emil\bin\Debug\net6.0-windows\Emil.exe
+D:\VS\Emil\bin\Debug\net6.0-windows\Emil.deps.json
+D:\VS\Emil\bin\Debug\net6.0-windows\Emil.runtimeconfig.json
+D:\VS\Emil\bin\Debug\net6.0-windows\Emil.dll
+D:\VS\Emil\bin\Debug\net6.0-windows\Emil.pdb
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.csproj.AssemblyReference.cache
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.Form1.resources
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.csproj.GenerateResource.cache
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.GeneratedMSBuildEditorConfig.editorconfig
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.AssemblyInfoInputs.cache
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.AssemblyInfo.cs
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.csproj.CoreCompileInputs.cache
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.dll
+D:\VS\Emil\obj\Debug\net6.0-windows\refint\Emil.dll
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.pdb
+D:\VS\Emil\obj\Debug\net6.0-windows\Emil.genruntimeconfig.cache
+D:\VS\Emil\obj\Debug\net6.0-windows\ref\Emil.dll
