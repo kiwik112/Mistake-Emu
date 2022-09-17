@@ -105,6 +105,13 @@ namespace Emil
                         }
                     }
                     break;
+                case Keys.Q:
+                    Application.Exit();
+                    break;
+                case Keys.R:
+                    System.Diagnostics.Process.Start(Application.ExecutablePath);
+                    Application.Exit();
+                    break;
             }
             outPos = cursorPos;
             return screenRam;
