@@ -4,22 +4,6 @@ namespace Emil
 {
     public partial class Form1 : Form
     {
-        private int _cursorPos = 0;
-        public int cursorPos
-        {
-            get
-            {
-                return _cursorPos;
-            }
-            set
-            {
-                int tempPos = _cursorPos;
-                _cursorPos = value;
-                CursorChangePos(tempPos);
-            }
-        }
-        public static int charSet = 0xE000;
-        public char[] screenRam = Enumerable.Repeat<char>((char)(' ' + charSet), 1000).ToArray();
         public Form1()
         {
             InitializeComponent();
@@ -29,12 +13,10 @@ namespace Emil
         {
             while (true)
             {
-                Debug.WriteLine(charSet.ToString("X4") + " U+" + ((int)screenRam[cursorPos]).ToString("X4"));
                 Thread.Sleep(500);
-                if ((int)screenRam[cursorPos] < (0x0200 + charSet)) screenRam[cursorPos] += (char)0x0200;
-                Debug.WriteLine(charSet.ToString("X4") + " U+" + ((int)screenRam[cursorPos]).ToString("X4"));
+                if (Vars.screenRam[Vars.cursorPos] < (0x0200 + Vars.charSet)) Vars.screenRam[Vars.cursorPos] += (char)0x0200;
                 Thread.Sleep(500);
-                if ((int)screenRam[cursorPos] >= (0x0200 + charSet)) screenRam[cursorPos] -= (char)0x0200;
+                if (Vars.screenRam[Vars.cursorPos] >= (0x0200 + Vars.charSet)) Vars.screenRam[Vars.cursorPos] -= (char)0x0200;
             }
         }
 //START THREADS
@@ -51,19 +33,25 @@ namespace Emil
 //HANDLE KEYS
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            screenRam = Key.Handle(e, screenRam, cursorPos, out int newPos);
-            cursorPos = newPos;
+            Key.Handle(e);
         }
 //PREVENT FROM LEAVING CURSOR BEHIND
-        private void CursorChangePos(int pos)
+        public static void CursorChangePos(int pos)
         {
-            if ((int)screenRam[cursorPos] < 0xE200) screenRam[cursorPos] += (char)0x0200;
-            if ((int)screenRam[pos] >= 0xE200) screenRam[pos] -= (char)0x0200;
+            if ((int)Vars.screenRam[Vars.cursorPos] < 0xE200) Vars.screenRam[Vars.cursorPos] += (char)0x0200;
+            if ((int)Vars.screenRam[pos] >= 0xE200) Vars.screenRam[pos] -= (char)0x0200;
         }
 //SCREEN UPDATE
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblMain.Text = new string(screenRam);
+            lblMain.Text = new string(Vars.screenRam);
+        }
+        public int getline
+        {
+            get
+            {
+                return (Vars.cursorPos - Vars.cursorPos % 40) / 40;
+            }
         }
     }
 }
