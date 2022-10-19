@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Security.Policy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
@@ -40,6 +41,12 @@ namespace Emil
             }
             if (cursor) chars[cursorPos] += (char)0x0200;
             return new string(chars);
+        }
+        public static void Write(char character)
+        {
+            if (cursorPos >= 999) return;
+            Screen.ram[Screen.cursorPos] = character;
+            Screen.cursorPos++;
         }
     }
 }

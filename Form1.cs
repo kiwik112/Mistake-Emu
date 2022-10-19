@@ -13,6 +13,7 @@ namespace Emil
         {
             Thread blinkThr = new Thread(Screen.CursorBlink);
             blinkThr.Start();
+            Kernel.Start();
         }
 //PASSING TO OTHER CLASSES
         private void timer1_Tick(object sender, EventArgs e)
@@ -23,6 +24,11 @@ namespace Emil
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Key.handle(e);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
