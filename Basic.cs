@@ -17,8 +17,11 @@ namespace Emil
         }
         private static void Execute(string line, bool programmed)
         {
-            int len = line.Trim().Split(' ').Length;
-            switch (line.Split(' ')[0].Trim())
+            string[] parameters = line.Split(',');
+            string cmd = line.Split(' ')[0];
+            parameters[0] = parameters[0].Remove(0, cmd.Length);
+            int len = parameters.Length;
+            switch (cmd)
             {
                 case "PRINT":
                     string[] text = line.Split('"');
@@ -38,6 +41,10 @@ namespace Emil
                     break;
                 case "EXIT":
                     if (len == 1) Environment.Exit(0);
+                    else Kernel.Print("?SYNTAX ERROR");
+                    break;
+                case "VPOKE":
+                    if (len == 2 && int.TryParse(parameters[0], out int address) && int.TryParse(parameters[1], out int value)) Screen.ram[address] = (char)value;
                     else Kernel.Print("?SYNTAX ERROR");
                     break;
                 default:
